@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -35,6 +37,17 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        User::create([
+            "name" => "admin",
+            "email" => "admin@gugu.gaga.com",
+            "password" => Hash::make("nem tetszik az arcod de nem mondom el"),
+        ]);
+        User::create([
+            "name" => "Almáli Péter Tamás",
+            "email" => "almasi@korp-orp.org",
+            "password" => Hash::make("tetszik az arcod de nem mondom el"),
+        ]);
     }
 
     /**

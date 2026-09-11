@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Project;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,7 +21,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Project
+        Project::create([
+            "name" => "php adatbázis",
+            "cost" => 100000000,
+            "time" => 10,
+            "manager_id" => 2,
+        ]);
     }
 
     /**

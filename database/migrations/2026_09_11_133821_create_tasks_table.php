@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,18 +22,16 @@ return new class extends Migration {
             $table->date("end_date")->nullable();
             $table->boolean("status")->default(false);
             $table->foreignId("user_id")->constrained()->onDelete("cascade");
-            $table->foreignId("project_id")->constrained();
+            $table->foreignId("project_id")->default(null)->constrained();
             $table->timestamps();
         });
-        User::create([
-            "name" => "admin",
-            "email" => "admin@gugu.gaga.com",
-            "password" => Hash::make("nem tetszik az arcod de nem mondom el"),
-        ]);
-        User::create([
-            "name" => "Almáli Péter Tamás",
-            "email" => "almasi@korp-orp.org",
-            "password" => Hash::make("tetszik az arcod de nem mondom el"),
+
+        Task::create([
+            "title" => "táblák",
+            "description" => "tetszik a workbanch",
+            "end_date" => null,
+            "user_id" => 2,
+            "project_id" => 1
         ]);
     }
 
